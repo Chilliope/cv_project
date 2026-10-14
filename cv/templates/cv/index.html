@@ -1,0 +1,125 @@
+{% extends "cv/base.html" %}
+{% load static %}
+
+{% block konten %}
+<div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+
+    <div class="overflow-hidden rounded-3xl bg-white shadow-xl">
+
+        <!-- Header Profil -->
+        <header class="bg-gradient-to-br from-slate-900 via-blue-900 to-blue-600 px-6 py-10 text-center text-white sm:px-10">
+            <img
+                src="{% static 'cv/foto.jpg' %}"
+                alt="Foto Profil"
+                class="mx-auto mb-5 h-36 w-36 rounded-full border-4 border-white/80 object-cover shadow-lg"
+            >
+
+            <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+                {{ profil.nama }}
+            </h1>
+
+            <p class="mt-2 text-lg font-medium text-blue-200">
+                {{ profil.profesi }}
+            </p>
+
+            <p class="mt-3 text-sm text-slate-200">
+                {{ profil.email }}
+            </p>
+        </header>
+
+        <!-- Isi CV -->
+        <main class="space-y-10 px-6 py-8 sm:px-10 sm:py-10">
+
+            <!-- Tentang Saya -->
+            <section>
+                <h2 class="section-title">
+                    Tentang Saya
+                </h2>
+                <p class="mt-3 leading-7 text-slate-600">
+                    {{ profil.tentang }}
+                </p>
+            </section>
+
+            <!-- Pendidikan -->
+            <section>
+                <h2 class="section-title">
+                    Pendidikan
+                </h2>
+
+                <div class="mt-4 space-y-3">
+                    {% for p in pendidikan %}
+                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-blue-300 hover:bg-blue-50">
+                        <h3 class="font-semibold text-slate-900">
+                            {{ p.nama_sekolah }}
+                        </h3>
+                        <p class="mt-1 text-sm text-slate-600">
+                            {{ p.jurusan }}
+                        </p>
+                        <p class="mt-2 text-sm font-medium text-blue-700">
+                            {{ p.tahun_mulai }} - {{ p.tahun_selesai }}
+                        </p>
+                    </div>
+                    {% empty %}
+                    <p class="text-slate-500">
+                        Belum ada data pendidikan.
+                    </p>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Proyek -->
+            <section>
+                <h2 class="section-title">
+                    Proyek
+                </h2>
+
+                <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                    {% for p in proyek %}
+                    <article class="rounded-xl border border-slate-200 p-5 transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-md">
+                        <h3 class="text-lg font-semibold text-slate-900">
+                            {{ p.nama_proyek }}
+                        </h3>
+
+                        <p class="mt-2 whitespace-pre-line text-sm leading-6 text-slate-600">{{ p.deskripsi }}</p>
+
+                        <p class="mt-4 text-sm font-medium text-blue-700">
+                            Tahun: {{ p.tahun }}
+                        </p>
+                    </article>
+                    {% empty %}
+                    <p class="text-slate-500">
+                        Belum ada data proyek.
+                    </p>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Keahlian -->
+            <section>
+                <h2 class="section-title">
+                    Keahlian
+                </h2>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                    {% for k in keahlian %}
+                    <span class="rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-200">
+                        {{ k.nama }}
+                    </span>
+                    {% empty %}
+                    <p class="text-slate-500">
+                        Belum ada keahlian.
+                    </p>
+                    {% endfor %}
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-slate-200 bg-slate-50 px-6 py-5 text-center text-sm text-slate-500">
+            CV Pribadi &copy; {% now "Y" %}
+        </footer>
+
+    </div>
+</div>
+{% endblock %}

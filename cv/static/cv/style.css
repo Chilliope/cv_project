@@ -1,0 +1,17 @@
+.foto-profil {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid white;
+}
+
+.section-title {
+    color: #2563eb;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.skill-item {
+    border-radius: 8px !important;
+    margin-bottom: 8px;
+}

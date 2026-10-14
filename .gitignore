@@ -1,0 +1,33 @@
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Django logs
+*.log
+local_settings.py
+
+# Database lokal (aktifkan jika tidak ingin upload database)
+# db.sqlite3
+# db.sqlite3-journal
+
+# Media uploads
+media/
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
